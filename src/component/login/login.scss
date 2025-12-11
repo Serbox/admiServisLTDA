@@ -1,0 +1,45 @@
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 1rem;
+}
+
+p-card { width: 420px; }
+
+.card-content { padding: 1rem 1.25rem; }
+
+.title { margin: 0 0 1rem 0; text-align: center; }
+
+.field { margin-bottom: 1rem; }
+
+label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+
+.error small { color: #dc2626; } /* rojo */
+
+.actions { display:flex; align-items:center; gap:.75rem; margin-top:.5rem; }
+
+.spinner { margin-left:.5rem; }
+
+.small-spinner { width:22px; height:22px; }
+
+.helper { margin-top:.75rem; text-align:center; }
+
+
+
+/* estado por defecto: borde invisible pero preserva el layout */
+.email-input {
+  border: 1px solid transparent;
+  border-radius: 4px; /* opcional */
+  padding: 0.5rem;    /* ajusta si quieres */
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  outline: none;
+}
+
+/* cuando recibe foco (click o tab) */
+.email-input:focus,
+.email-input:focus-visible {
+  border-color: #3b82f6; /* azul similar a text-blue-500 */
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.12); /* halo suave */
+}

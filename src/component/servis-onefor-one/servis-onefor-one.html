@@ -1,0 +1,152 @@
+<section class="servis-list">
+  <div *ngIf="loading" class="loading">Cargando…</div>
+  <div *ngIf="!loading && error" class="error">{{ error }}</div>
+
+<div class="w-full flex justify-center mb-4">
+  <h1 class="text-blue-600 text-center max-w-xl w-full">{{ serviceItem?.nombre_Servicio }}</h1>
+</div>
+
+
+
+
+  <ng-container *ngIf="!loading && !error && items?.length">
+
+    <div
+      class="servis-item"
+      *ngFor="let it of items; let i = index; trackBy: trackByIndex"
+      [ngClass]="{ 'reverse': (i % 2) === 1, 'no-image': !it.urlImagen }"
+    >
+      <!-- media -->
+      <div class="media" *ngIf="it.urlImagen">
+        <img [src]="it.urlImagen" [alt]="'imagen ' + (i + 1)" loading="lazy" />
+      </div>
+
+      <!-- contenido -->
+      <div class="content">
+        <!-- Puedes mostrar un título si existe -->
+        <!-- <h4 *ngIf="it.title" class="title">{{ it.title }}</h4> -->
+
+        <p class="desc" [innerText]="it.Descripcion"></p>
+      </div>
+    </div>
+  </ng-container>
+
+  <div *ngIf="!loading && !error && (!items || !items.length)" class="empty">
+    No hay descripciones disponibles.
+  </div>
+  <div class="w-full flex justify-center mb-4">
+  <h1 class="text-blue-600 text-center max-w-xl w-full">No Esperes Mas Contactanos</h1>
+</div>
+<div class="hero flex flex-column md:flex-row align-items-center justify-content-center gap-8 p-6 md:p-8 lg:p-10 border-round-3xl shadow-2xl  mb-8 ">
+            <!-- Card del formulario -->
+          <p-card class="hero__card">
+            <ng-template pTemplate="header">
+              <div
+                class="hero__card-header flex flex-column align-items-center pt-4 pb-3 px-4"
+              >
+                <div class="hero__arrow mb-3"></div>
+
+                <h2
+                style="color: rgb(8, 8, 8);"
+                  class="m-0 text-center  text-2xl font-bold line-height-3"
+                >
+                  Organiza tu espacio<br />
+                  con limpieza
+                </h2>
+
+                <p class="mt-2 mb-0 text-500 text-sm text-center">
+                  Déjanos tus datos y un asesor te contactará.
+                </p>
+              </div>
+            </ng-template>
+
+            <div class="p-4 pt-0">
+              <form
+                [formGroup]="frm"
+                (ngSubmit)="enviar()"
+                class="flex flex-column gap-3"
+              >
+                <div
+                  class="text-red-500 text-xs mt-1"
+                  *ngIf="
+                    frm.get('Nombre')?.invalid &&
+                    (frm.get('Nombre')?.touched || frm.get('Nombre')?.dirty)
+                  "
+                >
+                  Este campo es requerido.
+                </div>
+
+                <input
+
+                  pInputText
+                  formControlName="Nombre"
+                  placeholder="Nombre Completo *"
+                  class="w-full intput-background"
+                />
+                  <div
+                  class="text-red-500 text-xs mt-1"
+                  *ngIf="
+                    frm.get('Correo')?.invalid &&
+                    (frm.get('Correo')?.touched || frm.get('Correo')?.dirty)
+                  "
+                >
+                  Ingresa un correo electrónico válido.
+                </div>
+
+                <input
+                  pInputText
+                  formControlName="Correo"
+                  placeholder="Correo Electrónico *"
+                  class="w-full intput-background"
+                />
+                  <div
+                    class="text-red-500 text-xs mt-1"
+                    *ngIf="frm.get('Celular')?.touched || frm.get('Celular')?.dirty"
+                  >
+                    <!-- Requerido -->
+                    <span *ngIf="frm.get('Celular')?.hasError('required')">
+                      Este campo es requerido.
+                    </span>
+
+                    <!-- Longitud distinta de 10 -->
+                    <span
+                      *ngIf="
+                        !frm.get('Celular')?.hasError('required') &&
+                        (frm.get('Celular')?.hasError('minlength') ||
+                          frm.get('Celular')?.hasError('maxlength'))
+                      "
+                    >
+                      El número debe tener exactamente 10 dígitos.
+                    </span>
+                  </div>
+                <input
+                  pInputText
+                  formControlName="Celular"
+                  placeholder="Número de Celular *"
+                  class="w-full intput-background"
+                />
+                <input
+                  pInputText
+                  formControlName="Tipo_Limpieza"
+                  placeholder="Tipo Limpieza"
+                  class="w-full intput-background"
+                />
+
+                <button
+                  pButton
+                  type="submit"
+                  label="Recibir asesoría gratuita"
+                  class="w-full hero__btn border-none border-round-3xl py-3 text-base font-semibold"
+                ></button>
+
+                <small class="text-400 text-xs text-center mt-1">
+                  Respuesta en menos de 24 horas.
+                </small>
+              </form>
+            </div>
+          </p-card>
+
+          <img src="aseo-mujer.png" class="w-3 border-round-3xl" alt="admiservis">
+</div>
+
+</section>

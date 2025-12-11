@@ -1,0 +1,77 @@
+<header class="surface-0">
+  <div class="px-2 py-1">
+    <div class="flex align-items-center justify-content-between gap-2 w-full">
+      <a class="flex align-items-center gap-2 text-color no-underline" routerLink="/">
+        <img src="img/logo-solo.png" alt="ADMISERVIS" class="w-3rem h-3rem md:w-3rem md:h-3rem" />
+        <div class="line-height-1">
+          <div class="text-sm md:text-base font-bold letter-spacing-1">ADMISERVIS</div>
+          <div class="mt-1 font-bold text-color-text">LTDA</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex align-items-center gap-3">
+        <a
+          routerLink="/"
+          routerLinkActive="font-bold text-primary"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+        >
+          Inicio
+        </a>
+        <a
+          routerLink="/nosotros"
+          routerLinkActive="font-bold text-primary"
+          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+        >
+          Nosotros
+        </a>
+        <a
+          routerLink="/servicios"
+          routerLinkActive="font-bold text-primary"
+          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+        >
+          Servicios
+        </a>
+        <a
+          routerLink="/contacto"
+          routerLinkActive="font-bold text-primary"
+          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+        >
+          Contáctanos
+        </a>
+      </nav>
+
+      <div class="footer-contact-row flex align-items-center gap-3">
+        <div
+          pRipple
+          class="contact-card"
+          (click)="mailto()"
+        >
+          <div class="contact-icon">
+            <i class="pi pi-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <div class="contact-label">Escríbenos</div>
+            <div class="contact-value">{{ email }}</div>
+          </div>
+        </div>
+
+        <div
+          pRipple
+          class="contact-card"
+          (click)="call()"
+        >
+          <div class="contact-icon">
+            <i class="pi pi-phone"></i>
+          </div>
+          <div class="contact-text">
+            <div class="contact-label">Llámanos</div>
+            <div class="contact-value">{{ phone }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-top-1 surface-border"></div>
+</header>

@@ -1,0 +1,85 @@
+<footer class="app-footer">
+  <div class="footer-inner">
+
+    <!-- Columna izquierda: logo, texto, contacto -->
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="/logo-sin.png" alt="ADMISERVIS" class="footer-logo" />
+
+        <div class="footer-brand-text">
+          <h2 class="footer-title">
+            Admiservis LTDA
+          </h2>
+          <p class="footer-tagline">
+            Cuidamos tu espacio como si fuera nuestro.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-contact-row">
+        <div
+          pRipple
+          class="contact-card"
+          (click)="mailto()"
+        >
+          <div class="contact-icon">
+            <i class="pi pi-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <div class="contact-label">Escríbenos</div>
+            <div class="contact-value">{{ email }}</div>
+          </div>
+        </div>
+
+        <div
+          pRipple
+          class="contact-card"
+          (click)="call()"
+        >
+          <div class="contact-icon">
+            <i class="pi pi-phone"></i>
+          </div>
+          <div class="contact-text">
+            <div class="contact-label">Llámanos</div>
+            <div class="contact-value">{{ phone }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-socials">
+        <span class="socials-label">Síguenos</span>
+        <div class="socials-list">
+          <a *ngFor="let s of socials"
+             [href]="s.url"
+             target="_blank"
+             rel="noopener"
+             class="social-pill"
+             pRipple>
+            <i [class]="s.icon"></i>
+            <span>{{ s.label }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: imagen de equipo -->
+    <div class="footer-aside">
+      <div class="team-bubble">
+        <img src="/equipo.png"
+             alt="Equipo Admiservis"
+             class="team-img" />
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Línea inferior -->
+  <div class="footer-bottom">
+    <span>© {{ year }} Admiservis LTDA. Todos los derechos reservados.</span>
+    <span class="footer-bottom-links">
+      <a href="#">Política de privacidad</a>
+      <span class="dot-separator">•</span>
+      <a href="#">Términos de uso</a>
+    </span>
+  </div>
+</footer>

@@ -1,0 +1,231 @@
+/* service-hover-card.scss
+   Estilos completos para el componente ServiceHoverCard
+   - Variables y dark-mode
+   - Layout base (media / header / overlay)
+   - Hover: sombra, blur y ocultación del contenido trasero
+*/
+
+/* ---------- Variables ---------- */
+:root {
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  --accent: 37,99,235;     /* RGB para azul (usa en rgba(var(--accent), .xx)) */
+  --accent-hex: #2563eb;
+  --accent-2-hex: #7c3aed;
+  --glass: rgba(255,255,255,0.06);
+  --text: #0f172a;
+  --muted: #6b7280;
+  --card-radius: 12px;
+  --card-shadow: 0 6px 18px rgba(2,6,23,0.12);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    --glass: rgba(255,255,255,0.03);
+    --text: #ffffff;
+    --muted: #cbd5e1;
+    --card-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  }
+}
+
+/* ---------- Card Base ---------- */
+.svc-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  min-height: 18.5rem;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.148);
+  z-index: 0;
+}
+
+/* Hover + focus behaviour */
+.svc-card:hover,
+.svc-card:focus-within {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 18px 40px rgba(var(--accent), 0.14),
+    0 6px 18px rgba(12,12,12,0.06);
+}
+
+/* ---------- Media (imagen / icon) ---------- */
+.svc-media {
+  position: relative;
+  height: 10.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(34, 68, 124, 0.02), rgba(255,255,255,0.01));
+  transition: opacity 320ms ease, transform 320ms ease;
+  will-change: transform, opacity;
+}
+
+/* image */
+.svc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 450ms ease, opacity 300ms ease;
+}
+.svc-card:hover .svc-img { transform: scale(1.06); }
+
+/* icon fallback */
+.svc-icon {
+  font-size: 3.2rem;
+  color: rgb(var(--accent));
+  filter: drop-shadow(0 6px 18px rgba(37, 100, 235, 0.216));
+  transition: transform 300ms ease, color 300ms ease, opacity 300ms ease;
+}
+.svc-card:hover .svc-icon { transform: translateY(-6px) scale(1.06); color: var(--accent-2-hex); }
+
+/* ---------- Badge ---------- */
+.svc-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: linear-gradient(90deg, rgba(var(--accent),1), var(--accent-2-hex));
+  color: white;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(194, 187, 252, 0.471);
+  z-index: 30; /* encima de la media */
+}
+
+/* ---------- Header / Title ---------- */
+.svc-header {
+  padding: 0.9rem 1rem 0.6rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  transition: opacity 280ms ease, transform 280ms ease;
+  z-index: 10;
+}
+.svc-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
+
+/* ---------- Overlay (aparece en hover) ---------- */
+.svc-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.2rem;
+  /* oscuro gradual para legibilidad + blur */
+  background: linear-gradient(180deg, rgba(2,6,23,0.0) 40%, rgba(2,6,23,0.78) 100%);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 350ms ease, transform 350ms ease, background 350ms;
+  pointer-events: none;
+  z-index: 40;
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.25);
+}
+
+/* show overlay on hover/focus */
+.svc-card:hover .svc-overlay,
+.svc-card:focus-within .svc-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ---------- Overlay content ---------- */
+.svc-desc {
+  color: #ffffff;
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.4;
+  max-height: 6.6rem;
+  overflow: hidden;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+/* actions row inside overlay */
+.svc-actions {
+  width: 100%;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+/* button inside overlay */
+.svc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: linear-gradient(90deg, rgba(var(--accent),1), var(--accent-2-hex));
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(63, 72, 92, 0.355);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+}
+.svc-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(37, 100, 235, 0.5); }
+.svc-btn:focus { outline: 3px solid rgba(var(--accent), 0.18); }
+
+/* ---------- Hide / dim background elements when overlay visible ---------- */
+/* deja un halo sutil por defecto; pon 0 para ocultar por completo */
+.svc-card:hover .svc-media,
+.svc-card:focus-within .svc-media {
+  opacity: 0.06;               /* cambia a 0 para ocultar completamente */
+  transform: scale(0.98);
+  pointer-events: none;
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+
+.svc-card:hover .svc-header,
+.svc-card:focus-within .svc-header {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+/* Overlay should be above badge if needed; adjust badge z-index if want badge on top */
+.svc-card:hover .svc-badge { z-index: 41; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .svc-card { max-width: 100%; min-height: 17rem; }
+  .svc-media { height: 9.5rem; }
+  .svc-icon { font-size: 2.8rem; }
+}
+@media (max-width: 640px) {
+  .svc-card { max-width: 100%; min-height: 16rem; border-radius: 10px; }
+  .svc-img { height: 8.5rem; }
+  .svc-title { font-size: 1rem; }
+  .svc-overlay { padding: 0.9rem; }
+  .svc-desc { font-size: 0.92rem; }
+}
+
+/* ---------- Utilities / small tweaks ---------- */
+.svc-media img { display: block; }
+.svc-card * { box-sizing: border-box; }
+
+/* Optional: subtle focus outline for keyboard users */
+.svc-card:focus-within { box-shadow: 0 18px 40px rgba(var(--accent), 0.08), 0 6px 18px rgba(12,12,12,0.06); }
+
+/* End of file */

@@ -1,0 +1,22 @@
+<article class="svc-card" role="group" aria-label="{{ title }}">
+  <div class="svc-media" [attr.data-type]="isUrlImage ? 'img' : 'icon'">
+    <img *ngIf="isUrlImage" [src]="image" [alt]="title + ' image'" class="svc-img" />
+    <i *ngIf="!isUrlImage && image" [class]="image + ' svc-icon'" aria-hidden="true"></i>
+
+    <span class="svc-badge text-blue-600" *ngIf="badge">{{ badge }}</span>
+  </div>
+
+  <header class="svc-header">
+    <h3 class="svc-title">{{ title }}</h3>
+  </header>
+
+  <div class="svc-overlay">
+    <p class="svc-desc">{{ description ?? '' }}</p>
+
+    <div class="svc-actions">
+      <button class="svc-btn" type="button" (click)="onView(id)" aria-label="Ver más sobre {{ title }}">
+        Ver más
+      </button>
+    </div>
+  </div>
+</article>

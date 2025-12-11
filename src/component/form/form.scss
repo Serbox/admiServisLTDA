@@ -1,0 +1,221 @@
+/* ========== HERO LAYOUT GENERAL ========== */
+
+.hero {
+  position: relative;
+  padding: 2rem 0 5rem; /* espacio arriba y abajo */
+}
+
+/* Centrar verticalmente el contenido como en el mockup */
+.hero .grid {
+  min-height: 65vh;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== LADO IZQUIERDO ========== */
+
+.hero__title {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  font-weight: 700;
+  //color: #111827;
+  max-width: 430px;
+}
+
+@media (min-width: 1200px) {
+  .hero__title {
+    font-size: 3.6rem;
+  }
+}
+
+/* ========== LADO DERECHO (imagen + card) ========== */
+
+.hero__right {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+}
+
+/* Imagen que pisa la franja */
+.hero__img {
+  max-height: 390px;
+  width: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -16vh; /* cuánto baja sobre la franja */
+}
+
+/* ========== CARD FORMULARIO ========== */
+
+.hero__card {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -17vh;      /* también pisa la franja */
+  flex-shrink: 0;            /* que no se aplaste */
+  width: 100%;
+  max-width: 360px;
+  border-radius: 1.75rem;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.16);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* quitar padding extra del card */
+.hero__card .p-card-body,
+.hero__card .p-card-content {
+  padding: 0;
+}
+
+/* header del card */
+.hero__card-header {
+  text-align: center;
+}
+
+/* barrita superior tipo mockup */
+.hero__arrow {
+  width: 70px;
+  height: 4px;
+  border-radius: 999px;
+  background: #2563eb;
+}
+
+/* inputs redonditos */
+.hero__card .p-inputtext {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.95rem;
+}
+
+.hero__card .p-inputtext:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.18);
+}
+
+/* botón del formulario */
+.hero__btn {
+  border-radius: 999px !important;
+  background: #2563eb !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.hero__btn:hover {
+  background: #1d4ed8 !important;
+}
+
+/* ========== FRANJA AZUL ========== */
+
+.hero__stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.3rem 0;
+  z-index: 0; /* detrás de imagen y card */
+}
+
+.hero__years-number {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.hero__years-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* ========== RESPONSIVE (tablets y móvil) ========== */
+
+@media (max-width: 991px) {
+  .hero {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero .grid {
+    min-height: auto;
+  }
+
+  /* el título un poquito más pequeño y centrado */
+  .hero__title {
+    font-size: 2.4rem;
+    max-width: none;
+    text-align: center;
+  }
+
+  .hero__right {
+    justify-content: center;
+    margin-top: 2rem;
+    flex-direction: column-reverse; /* primero card, luego imagen */
+    align-items: center;
+  }
+
+  .hero__img {
+    margin-bottom: 0;       /* ya no pisa la franja en móvil */
+    max-height: 300px;
+  }
+
+  .hero__card {
+    margin-bottom: 0;
+    max-width: 420px;
+  }
+
+  /* la franja ya no es absolute, baja después del contenido */
+  .hero__stripe {
+    position: static;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .hero__years-number {
+    font-size: 2.2rem;
+  }
+
+  .hero__years-text {
+    font-size: 1rem;
+  }
+}
+.btn-video{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-video:hover{
+  background-color: #2563eb;
+  width: 45px;
+  height: 45px;
+}
+
+/* Extra fino para móviles muy pequeños */
+@media (max-width: 600px) {
+  .hero {
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__img {
+    max-height: 260px;
+  }
+
+  .hero__card {
+    max-width: 100%;
+    border-radius: 1.25rem;
+  }
+}

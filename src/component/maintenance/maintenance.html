@@ -1,0 +1,78 @@
+<section class="maintenance surface-0">
+  <div class="mx-auto w-full px-3 md:px-5" style="max-width:1140px">
+    <div class="grid  align-items-center">
+
+    
+      <div class="col-12 lg:col-7 reveal-on-scroll from-bottom">
+        <h2 class="m-0 mb-4">
+          <span class="text-blue-600 font-bold">Servicios</span>
+          <span class="text-900"> de Mantenimiento</span>
+        </h2>
+
+        <div class="grid mt-3">
+       
+          <div class="col-12 md:col-6" *ngIf="services[0] as s">
+            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
+              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              <div>
+                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
+                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="col-12 md:col-6" *ngIf="services[1] as s">
+            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
+              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              <div>
+                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
+                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="col-12 md:col-6" *ngIf="services[2] as s">
+            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
+              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              <div>
+                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
+                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+              </div>
+            </div>
+          </div>
+
+        
+          <div class="col-12 md:col-6" *ngIf="services[3] as s">
+            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
+              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              <div>
+                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
+                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <button
+            pButton
+            class="px-5 py-3 border-none text-base bg-blue-600"
+            [routerLink]="['/servicios']"
+            label="Ver Más">
+          </button>
+        </div>
+      </div>
+
+   
+      <div class="col-12 lg:col-5 flex justify-content-end top-100 lg:mt-0">
+        <img
+          [src]="workerImage"
+          alt="Técnico de mantenimiento Admiservis"
+          class="worker-img" />
+      </div>
+
+    </div>
+  </div>
+</section>

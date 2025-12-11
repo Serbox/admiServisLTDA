@@ -1,0 +1,238 @@
+/* src/app/component/home/about-and-clients.scss */
+
+/* círculo con borde suave (opcional) */
+.circle-wrap {
+  border-radius: 9999px;
+  padding: .25rem;
+  border: 1px solid var(--p-surface-200);
+}
+
+/* barrita azul de acento arriba a la derecha */
+.accent-bar {
+  width: 14rem;
+  height: .5rem;
+  background: var(--p-primary-color);
+}
+
+/* tarjeta de logo */
+.logo-card {
+  transition: transform .18s ease, box-shadow .18s ease;
+  min-height: 7rem;
+}
+.logo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--p-shadow-3);
+}
+
+/* controla tamaño del logo dentro de la tarjeta */
+.logo-img {
+  max-width: 140px;
+  max-height: 48px;
+  object-fit: contain;
+  filter: grayscale(100%); /* opcional: estilo “marcas” */
+  opacity: .9;
+}
+.logo-card:hover .logo-img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+
+.accent-bar {
+  width: 160px;
+  height: 6px;
+  background: #103ab9; /* verde */
+}
+
+/* Contenedor circular, responsivo */
+.circle-wrap {
+  position: relative;
+  width: clamp(9rem, 30vw, 16rem); /* mínimo 9rem, máximo 16rem, y escala con el viewport */
+  aspect-ratio: 1 / 1;             /* siempre cuadrado → se vuelve círculo con border-radius */
+}
+
+/* Skeleton e imagen ocupan TODO el círculo */
+.circle-wrap p-skeleton,
+.circle-wrap .p-skeleton,
+.circle-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Imagen por encima del skeleton */
+.circle-wrap p-skeleton,
+.circle-wrap .p-skeleton {
+  position: absolute;
+  inset: 0;
+}
+
+.circle-img {
+  position: relative;
+  object-fit: cover;   /* recorta para que siempre se vea bien dentro del círculo */
+  z-index: 1;
+}
+
+/* Ajuste extra para móviles pequeños (opcional) */
+@media (max-width: 600px) {
+  .circle-wrap {
+    width: clamp(7rem, 45vw, 11rem);
+  }
+}
+
+
+.clients-section {
+  width: 100%;
+  padding: 4rem 1.5rem;
+  background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #020617 100%);
+  display: flex;
+  justify-content: center;
+}
+
+.clients-inner {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.clients-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e5e7eb;
+  margin-bottom: 0.9rem;
+}
+
+.clients-title {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  color: #f9fafb;
+}
+
+.clients-subtitle {
+  font-size: 0.95rem;
+  max-width: 640px;
+  margin: 0 auto 2.2rem auto;
+  color: #9ca3af;
+}
+
+/* Fila de logos estilo “cápsulas” */
+.clients-logos-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cada cápsula de logo */
+.logo-pill {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 180px;
+  max-width: 220px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* efecto suave tipo “floating chip” */
+  border-radius: 999px;
+  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.92));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow:
+    0 18px 60px rgba(15, 23, 42, 0.85),
+    0 0 0 1px rgba(15, 23, 42, 0.8);
+  overflow: hidden;
+  padding: 1.1rem 1.7rem;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+/* Pequeño efecto de relieve en algunos elementos para dar dinamismo */
+.logo-pill:nth-child(2),
+.logo-pill:nth-child(4) {
+  transform: translateY(4px);
+}
+
+.logo-pill:nth-child(3) {
+  transform: translateY(-6px);
+}
+
+/* Hover: se eleva un poco y se aclara el borde */
+.logo-pill:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: #248cfb;
+  box-shadow:
+    0 22px 70px rgba(15, 23, 42, 0.95),
+    0 0 0 1px rgba(248, 250, 252, 0.08);
+  background: radial-gradient(circle at top, rgba(248, 250, 252, 0.06), rgba(15, 23, 42, 0.95));
+}
+
+/* Contenedor interno del logo para centrar y limitar tamaño */
+.logo-pill-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen de logo */
+.logo-img {
+  max-width: 150px;
+  max-height: 50px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.9;
+  transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+}
+
+/* Al pasar el mouse el logo se vuelve un poco más vivo */
+.logo-pill:hover .logo-img {
+  opacity: 1;
+  filter: grayscale(10%);
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .clients-title {
+    font-size: 1.4rem;
+  }
+
+  .clients-logos-row {
+    gap: 1rem;
+  }
+
+  .logo-pill {
+    min-width: 160px;
+    max-width: 190px;
+    height: 80px;
+    padding: 0.9rem 1.4rem;
+  }
+
+  .logo-img {
+    max-width: 130px;
+    max-height: 44px;
+  }
+}

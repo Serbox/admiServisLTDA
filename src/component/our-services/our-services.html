@@ -1,0 +1,41 @@
+<section class="grid justify-content-center p-4 poppins-regular">
+  <!-- Card especial (título + ver más) -->
+  <div class="col-12 sm:col-6 lg:col-3 flex justify-content-center">
+    <div
+      class="p-4 flex flex-column align-items-center justify-content-center text-center gap-4 w-full md:w-10 h-full min-h-20rem"
+    >
+      <h3 class="text-xl font-semibold text-color m-0">Nuestros servicios populares</h3>
+      <button
+        pButton
+        class="px-5 py-3 border-none text-base bg-blue-600"
+        (click)="goToServices()"
+        label="Ver Más"
+      ></button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="col-12 text-center">
+    <div class="spinner" style="margin:1rem auto"></div>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="!loading && error" class="col-12 text-center text-red-600">
+    {{ error }}
+  </div>
+
+  <!-- Lista de servicios (hasta 2) -->
+  <ng-container *ngIf="!loading && !error">
+    <div
+      class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
+      *ngFor="let item of services; trackBy: trackById"
+    >
+      <app-card-service [props]="item" class="w-full md:w-10"></app-card-service>
+    </div>
+
+    <!-- Tarjeta fija "Otros servicios" al final -->
+    <div class="col-12 sm:col-6 lg:col-3 flex justify-content-center">
+      <app-card-service [props]="otherCard" class="w-full md:w-10"></app-card-service>
+    </div>
+  </ng-container>
+</section>

@@ -1,0 +1,48 @@
+<section class="grid justify-content-center p-4 poppins-regular">
+  <div class="col-12 text-center mb-4">
+    <h2 class="text-2xl font-semibold text-blue-600">Más Servicios</h2>
+  </div>
+  <!-- debajo del bloque Error -->
+<!-- <div  class="col-12 text-center text-red-600">
+  {{ errorMsg }}
+  <div class="mt-3">
+    <button pButton type="button" (click)="ngOnInit()" label="Reintentar"></button>
+  </div>
+</div>
+
+<div class="col-12 text-center mb-2">
+  DEBUG — loading: {{ loading }} — services.length: {{ services?.length ?? 0 }}
+</div> -->
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="col-12 text-center">
+    Cargando…
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="!loading && errorMsg" class="col-12 text-center text-red-600">
+    {{ errorMsg }}
+  </div>
+
+  <!-- Empty state -->
+  <div *ngIf="!loading && !services?.length && !errorMsg" class="col-12 text-center">
+    No hay servicios por mostrar.
+  </div>
+
+  <!-- Lista -->
+  <ng-container *ngIf="!loading && services?.length">
+    <div
+      class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
+      *ngFor="let item of services; let i = index; trackBy: trackById"
+    >
+      <app-service-hover-card
+        [id]="item.id ?? 0"
+        [title]="item.nombre_Servicio ?? ''"
+        [description]="item.mini_descripcion ?? ''"
+        [image]="item.Logo ?? ''"
+        [badge]="'Popular'"
+        class="w-full md:w-10"
+      ></app-service-hover-card>
+    </div>
+  </ng-container>
+</section>

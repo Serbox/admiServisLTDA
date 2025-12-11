@@ -1,0 +1,221 @@
+<div class="inicioadmin">
+  <header class="header">
+    <h1>Panel Admin</h1>
+    <!-- usar styleClass y type="button" para evitar submits accidentales -->
+    <button pButton type="button" (click)="logout()"
+      styleClass="p-button-raised p-button-sm "
+      class="bg-blue-600 border-transparent"
+      style="color: white;"
+      icon="pi pi-sign-out"
+      aria-label="Cerrar sesión">
+      Cerrar Sesión
+    </button>
+  </header>
+
+  <main class="p-4 flex gap-4 items-center justify-center w-full">
+    <!-- <button pButton type="button"
+      styleClass="p-button-outlined "
+      class="bg-blue-600 border-transparent"
+      style="color: white;">
+      Crear un Servicio
+    </button> -->
+
+    <!-- <button pButton type="button"
+      styleClass="p-button-outlined "
+      class="bg-blue-600 border-transparent"
+      style="color: white;">
+      Crear un artículo
+    </button> -->
+  </main>
+
+
+
+  <div class="form-wrapper">
+    <p-card>
+      <div class="card-header">
+        <h2 class="title">
+          {{ servicioEditandoId ? 'Editar Servicio' : 'Agregar Servicio' }}
+        </h2>
+        <p class="subtitle">
+          Completa los datos para {{ servicioEditandoId ? 'actualizar' : 'crear' }} el servicio
+        </p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="AgregarServicio()" class="form-grid">
+
+        <!-- Nombre -->
+        <div class="field">
+          <label for="servicio" class="label">Nombre del Servicio *</label>
+          <div class="input-with-icon">
+            <i class="pi pi-tag input-icon" aria-hidden="true"></i>
+            <input id="servicio" pInputText type="text"
+              formControlName="nombre_Servicio"
+              placeholder="Ej. Limpieza profunda"
+              class="w-full input"
+              [class.invalid]="f.nombre_Servicio.touched && f.nombre_Servicio.invalid"
+              [attr.aria-invalid]="f.nombre_Servicio.invalid"
+              aria-describedby="nombreHelp" />
+          </div>
+          <small id="nombreHelp" class="error" *ngIf="f.nombre_Servicio.touched && f.nombre_Servicio.invalid">
+            <span *ngIf="f.nombre_Servicio.hasError('required')">El nombre del servicio es requerido.</span>
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="logo" class="label">
+            Logo *
+            <i [class]="this.logoVisualizacion "></i>
+          </label>
+          <div class="input-with-icon">
+            <i class="pi pi-image input-icon" aria-hidden="true"></i>
+            <input id="logo" pInputText type="text"
+              formControlName="Logo"
+              placeholder="P.ej. broom, spray o pega la URL"
+              class="w-full input"
+              [class.invalid]="f.Logo.touched && f.Logo.invalid"
+              [attr.aria-invalid]="f.Logo.invalid"
+              aria-describedby="logoHelp"
+              (change)="VisulizarLogo()" />
+          </div>
+
+          <a href="https://fontawesome.com/search#icongrid" target="_blank">
+            Aqui puedes encontrar los iconos que puedes usar
+          </a>
+
+          <small id="logoHelp" class="error" *ngIf="f.Logo.touched && f.Logo.invalid">
+            <span *ngIf="f.Logo.hasError('required')">Selecciona o pega un logo.</span>
+          </small>
+
+          <div *ngIf="f.Logo.value && f.Logo.value.startsWith('http')" class="mt-2">
+            <img [src]="f.Logo.value" alt="preview logo"
+                 style="width:48px;height:48px;object-fit:contain;border-radius:6px" />
+          </div>
+        </div>
+
+        <div class="field field-full">
+          <label for="mini_descripcion" class="label">Mini descripción *</label>
+          <textarea id="mini_descripcion"
+            pInputTextarea
+            formControlName="mini_descripcion"
+            rows="3"
+            placeholder="Escribe aquí una breve descripción (máx. 150 caracteres)"
+            class="textarea"
+            [class.invalid]="f.mini_descripcion.touched && f.mini_descripcion.invalid"
+            aria-describedby="miniHelp"></textarea>
+          <div class="meta-row">
+            <small id="miniHelp" class="error" *ngIf="f.mini_descripcion.touched && f.mini_descripcion.invalid">
+              <span *ngIf="f.mini_descripcion.hasError('required')">La descripción es requerida.</span>
+              <span *ngIf="f.mini_descripcion.hasError('maxlength')">Máx. 150 caracteres.</span>
+            </small>
+            <small class="char-count">{{ miniDescLength }} / 150</small>
+          </div>
+        </div>
+
+        <div class="flex flex-column gap-2 field field-full">
+          <div class="field">
+            <button pButton type="button"
+              (click)="addDescription()"
+              class="bg-blue-600 border-transparent"
+              style="color:white"
+              styleClass="p-button-sm p-button-rounded p-button-secondary">
+              Agregar descripción
+            </button>
+          </div>
+
+          <div class="descriptions-list" *ngIf="descriptions.length > 0" formArrayName="descriptions">
+            <div *ngFor="let d of descriptionControls; let i = index"
+                 [formGroupName]="i" class="description-item">
+
+              <label>Descripción {{ i + 1 }}</label>
+              <textarea pInputTextarea formControlName="Descripcion"
+                        rows="3"
+                        placeholder="Descripción detallada"
+                        class="textarea"></textarea>
+
+              <div class="meta-row">
+                <small class="error" *ngIf="d.get('Descripcion')?.touched && d.get('Descripcion')?.invalid">
+                  <span *ngIf="d.get('Descripcion')?.hasError('required')">Requerido.</span>
+                  <span *ngIf="d.get('Descripcion')?.hasError('maxlength')">Máx. 500 caracteres.</span>
+                </small>
+                <small class="char-count">{{ descLength(i) }} caracteres</small>
+              </div>
+
+              <input type="file" accept="image/*" (change)="onFileSelected($event, i)" />
+              <img *ngIf="previews.get(i)" [src]="previews.get(i)" style="width:120px;height:80px;object-fit:cover" />
+              <img *ngIf="d.get('urlImagen')?.value && !previews.get(i)"
+                   [src]="d.get('urlImagen')?.value" style="width:120px" />
+
+              <div class="actions-row">
+                <button pButton type="button"
+                  (click)="removeDescription(i)"
+                  styleClass="p-button-text p-button-danger "
+                  class="bg-blue-600 border-transparent"
+                  style="color: white;">
+                  Eliminar
+                </button>
+              </div>
+              <hr />
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button pButton type="submit"
+            class="bg-blue-600 border-transparent"
+            style="color: white;"
+            [label]="servicioEditandoId ? 'Actualizar Servicio' : 'Guardar Servicio'"
+            [disabled]="form.invalid">
+          </button>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>
+
+
+<section class="services-table-section">
+  
+  <div class="table-container" *ngIf="servicios?.length; else noServicios">
+    <h2 class="section-title">Servicios creados</h2>ß
+    <table class="modern-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Logo</th>
+          <th>Mini descripción</th>
+          <th class="actions-col">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let s of servicios">
+          <td>{{ s.id }}</td>
+          <td class="name-col">{{ s.nombre_Servicio }}</td>
+
+          <td>
+            <i *ngIf="s.Logo && !s.Logo.startsWith('http')" [class]="s.Logo + ' service-icon'"></i>
+            <img *ngIf="s.Logo?.startsWith('http')" [src]="s.Logo" class="logo-img" />
+          </td>
+
+          <td class="mini-desc">{{ s.mini_descripcion }}</td>
+
+          <td class="actions">
+            <button class="action-btn edit-btn" (click)="editarServicio(s)">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+
+            <button class="action-btn delete-btn" (click)="eliminarServicio(s)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noServicios>
+    <p class="no-data">No hay servicios creados todavía.</p>
+  </ng-template>
+</section>
+

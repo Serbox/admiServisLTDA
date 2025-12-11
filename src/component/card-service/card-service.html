@@ -1,0 +1,44 @@
+<article
+  class="service-card"
+  role="article"
+  aria-label="{{ nombre_Servicio || 'Servicio' }}"
+  tabindex="0"
+>
+  <!-- Media (imagen o icono) -->
+  <div class="service-media" aria-hidden="true">
+    <img
+      *ngIf="isUrl(Logo)"
+      [src]="Logo"
+      [alt]="nombre_Servicio + ' image'"
+      class="service-img"
+      loading="lazy"
+    />
+
+    <i
+      *ngIf="!isUrl(Logo) && Logo"
+      [ngClass]="(Logo || '') + ' service-icon'"
+      aria-hidden="true"
+    ></i>
+
+    <div *ngIf="!Logo" class="service-icon-placeholder">
+      <i class="pi pi-briefcase service-icon" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <header class="service-head">
+    <h3 class="service-title">{{ nombre_Servicio }}</h3>
+  </header>
+
+  <!-- Description -->
+  <div class="service-body">
+    <p class="service-desc">{{ mini_descripcion }}</p>
+  </div>
+
+  <!-- CTA pequeño (opcional) -->
+  <footer class="service-footer" aria-hidden="true">
+
+    <button *ngIf="id == -1" class="service-cta" type="button" (click)="more()">Ver más</button>
+    <button *ngIf="id != -1" class="service-cta" type="button" (click)="onView(props.id)">Ver más</button>
+  </footer>
+</article>
