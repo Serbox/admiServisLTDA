@@ -3,6 +3,12 @@
 
 
 
+html {
+  scroll-behavior: smooth;
+}
+
+
+
 /* opcional pero recomendable: subir z-index */
 .swal2-container {
   z-index: 99999 !important;
@@ -130,4 +136,56 @@
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   font-style: italic;
+}
+//-----------------------------
+//-----------------------------
+//-----------------------------
+//-----------------------------
+/* Estado base: oculto y listo para animar */
+.reveal-base {
+  opacity: 0;
+  transform: translateY(10px);
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1); // easing suave
+  will-change: opacity, transform;
+}
+
+/* Cuando entra al viewport */
+.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Variantes */
+
+/* Desde abajo hacia arriba */
+.reveal-up {
+  transform: translate3d(0, 24px, 0);
+}
+
+/* Desde la izquierda */
+.reveal-left {
+  transform: translate3d(-32px, 0, 0);
+}
+
+/* Desde la derecha */
+.reveal-right {
+  transform: translate3d(32px, 0, 0);
+}
+
+/* Solo fade */
+.reveal-fade {
+  transform: none;
+}
+
+/* Zoom + fade */
+.reveal-zoom {
+  transform: scale(0.96);
+}
+
+/* Responsive tweak: en móviles, animación un poco más corta */
+@media (max-width: 767px) {
+  .reveal-base {
+    transition-duration: 450ms !important;
+  }
 }

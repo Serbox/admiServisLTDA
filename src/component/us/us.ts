@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CountUpDirective } from '../../app/shared/directives/count-up';
 
 @Component({
   selector: 'app-us',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CountUpDirective],
   templateUrl: './us.html',
   styleUrl: './us.scss'
 })

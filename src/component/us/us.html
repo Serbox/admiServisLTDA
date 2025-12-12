@@ -51,22 +51,49 @@
   </div>
 
  
-  <div class="grid text-center mt-4 md:mt-5">
-    <div class="col-12 md:col-4">
-      <div class="text-blue-600 font-bold text-4xl md:text-5xl">+ 12</div>
-      <div class="mt-1 text-900 text-base md:text-lg font-semibold">Años de Experiencia</div>
-    </div>
+<div class="grid text-center mt-4 md:mt-5">
 
-    <div class="col-12 md:col-4">
-      <div class="text-blue-600 font-bold text-4xl md:text-5xl">+ 18</div>
-      <div class="mt-1 text-900 text-base md:text-lg font-semibold">Clientes Satisfechos</div>
-    </div>
-
-    <div class="col-12 md:col-4">
-      <div class="text-blue-600 font-bold text-4xl md:text-5xl">+ 100</div>
-      <div class="mt-1 text-900 text-base md:text-lg font-semibold">Proyectos Completados</div>
+  <div class="col-12 md:col-4">
+    <div
+      class="text-blue-600 font-bold text-4xl md:text-5xl"
+      appCountUp
+      [countTo]="12"
+      prefix="+ "
+      [duration]="1500"
+    ></div>
+    <div class="mt-1 text-900 text-base md:text-lg font-semibold">
+      Años de Experiencia
     </div>
   </div>
+
+  <div class="col-12 md:col-4">
+    <div
+      class="text-blue-600 font-bold text-4xl md:text-5xl"
+      appCountUp
+      [countTo]="18"
+      prefix="+ "
+      [duration]="1500"
+    ></div>
+    <div class="mt-1 text-900 text-base md:text-lg font-semibold">
+      Clientes Satisfechos
+    </div>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <div
+      class="text-blue-600 font-bold text-4xl md:text-5xl"
+      appCountUp
+      [countTo]="100"
+      prefix="+ "
+      [duration]="1500"
+    ></div>
+    <div class="mt-1 text-900 text-base md:text-lg font-semibold">
+      Proyectos Completados
+    </div>
+  </div>
+
+</div>
+
 </section>
 <!-- src/app/component/home/about-and-clients.html -->
 
@@ -84,7 +111,7 @@
     </p-skeleton> -->
 
     <img
-      src="/juanreseña.png"
+      src="/alejandro.png"
       alt="reseña de admiservis"
       class="circle-img"
     />

@@ -1,73 +1,164 @@
-<header class="surface-0">
-  <div class="px-2 py-1">
-    <div class="flex align-items-center justify-content-between gap-2 w-full">
-      <a class="flex align-items-center gap-2 text-color no-underline" routerLink="/">
-        <img src="img/logo-solo.png" alt="ADMISERVIS" class="w-3rem h-3rem md:w-3rem md:h-3rem" />
-        <div class="line-height-1">
-          <div class="text-sm md:text-base font-bold letter-spacing-1">ADMISERVIS</div>
-          <div class="mt-1 font-bold text-color-text">LTDA</div>
-        </div>
-      </a>
+<header class="app-header surface-0 shadow-2">
+  <div class="app-header-inner px-3 py-2">
+    <!-- Logo + Marca -->
+    <a
+      class="brand-link flex align-items-center gap-2 text-color no-underline"
+      routerLink="/"
+    >
+      <img
+        src="fondo-blanco.png"
+        alt="Admiservis LTDA"
+        class="brand-logo"
+        
+      />
+      <div class="line-height-1">
+        <div class="brand-title">ADMISERVIS</div>
+        <div class="brand-subtitle">LTDA</div>
+      </div>
+    </a>
 
-      <nav class="hidden md:flex align-items-center gap-3">
+    <!-- Botón hamburguesa (solo móvil) -->
+    <button
+      type="button"
+      class="menu-toggle md:hidden p-link flex align-items-center justify-content-center border-round"
+      (click)="isMobileMenuOpen = !isMobileMenuOpen"
+    >
+      <i
+        class="pi text-xl"
+        [ngClass]="{ 'pi-bars': !isMobileMenuOpen, 'pi-times': isMobileMenuOpen }"
+      ></i>
+    </button>
+
+      <nav class="app-nav hidden md:flex align-items-center gap-2">
         <a
-          routerLink="/"
-          routerLinkActive="font-bold text-primary"
-          [routerLinkActiveOptions]="{ exact: true }"
-          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+          class="nav-link"
+          [routerLink]="['/inicio']"
         >
           Inicio
         </a>
+
         <a
-          routerLink="/nosotros"
-          routerLinkActive="font-bold text-primary"
-          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+          class="nav-link"
+          (click)="scrollTo('nosotros')"
         >
           Nosotros
         </a>
+
         <a
-          routerLink="/servicios"
-          routerLinkActive="font-bold text-primary"
-          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+          class="nav-link"
+          (click)="scrollTo('servicios')"
         >
           Servicios
         </a>
+
         <a
-          routerLink="/contacto"
-          routerLinkActive="font-bold text-primary"
-          class="no-underline text-color text-sm md:text-base px-2 py-1 border-round transition-duration-150 hover:surface-100"
+          class="nav-link"
+          (click)="scrollTo('mantenimiento')"
         >
-          Contáctanos
+          Mantenimiento
         </a>
       </nav>
 
-      <div class="footer-contact-row flex align-items-center gap-3">
-        <div
-          pRipple
-          class="contact-card"
-          (click)="mailto()"
-        >
-          <div class="contact-icon">
-            <i class="pi pi-envelope"></i>
-          </div>
-          <div class="contact-text">
-            <div class="contact-label">Escríbenos</div>
-            <div class="contact-value">{{ email }}</div>
-          </div>
-        </div>
 
-        <div
-          pRipple
-          class="contact-card"
-          (click)="call()"
-        >
-          <div class="contact-icon">
-            <i class="pi pi-phone"></i>
-          </div>
-          <div class="contact-text">
-            <div class="contact-label">Llámanos</div>
-            <div class="contact-value">{{ phone }}</div>
-          </div>
+    <!-- Contacto desktop -->
+    <div class="app-contact hidden lg:flex align-items-center gap-2">
+      <div
+        pRipple
+        class="contact-card"
+        (click)="mailto()"
+      >
+        <div class="contact-icon">
+          <i class="pi pi-envelope"></i>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">Escríbenos</div>
+          <div class="contact-value">{{ email }}</div>
+        </div>
+      </div>
+
+      <div
+        pRipple
+        class="contact-card"
+        (click)="call()"
+      >
+        <div class="contact-icon">
+          <i class="pi pi-phone"></i>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">Llámanos</div>
+          <div class="contact-value">{{ phone }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel móvil: menú + contacto -->
+  <div
+    class="app-mobile-panel md:hidden"
+    *ngIf="isMobileMenuOpen"
+  >
+    <nav class="flex flex-column gap-1 px-3 pb-2">
+      <a
+        routerLink="/"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link nav-link-mobile"
+        (click)="isMobileMenuOpen = false"
+      >
+        Inicio
+      </a>
+      <a
+        routerLink="/nosotros"
+        routerLinkActive="nav-link-active"
+        class="nav-link nav-link-mobile"
+        (click)="isMobileMenuOpen = false"
+      >
+        Nosotros
+      </a>
+      <a
+        routerLink="/servicios"
+        routerLinkActive="nav-link-active"
+        class="nav-link nav-link-mobile"
+        (click)="isMobileMenuOpen = false"
+      >
+        Servicios
+      </a>
+      <a
+        routerLink="/contacto"
+        routerLinkActive="nav-link-active"
+        class="nav-link nav-link-mobile"
+        (click)="isMobileMenuOpen = false"
+      >
+        Contáctanos
+      </a>
+    </nav>
+
+    <div class="px-3 pb-3 flex flex-column gap-2">
+      <div
+        pRipple
+        class="contact-card w-full"
+        (click)="mailto()"
+      >
+        <div class="contact-icon">
+          <i class="pi pi-envelope"></i>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">Escríbenos</div>
+          <div class="contact-value">{{ email }}</div>
+        </div>
+      </div>
+
+      <div
+        pRipple
+        class="contact-card w-full"
+        (click)="call()"
+      >
+        <div class="contact-icon">
+          <i class="pi pi-phone"></i>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">Llámanos</div>
+          <div class="contact-value">{{ phone }}</div>
         </div>
       </div>
     </div>

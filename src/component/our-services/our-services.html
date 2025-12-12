@@ -1,10 +1,21 @@
-<section class="grid justify-content-center p-4 poppins-regular">
+<section
+  class="grid justify-content-center p-4 poppins-regular"
+  appScrollReveal="up"
+  [revealStagger]="true"
+  [revealDuration]="650"
+  [revealStaggerStep]="100"
+>
   <!-- Card especial (título + ver más) -->
-  <div class="col-12 sm:col-6 lg:col-3 flex justify-content-center">
+  <div
+    class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
+    data-reveal-item
+  >
     <div
       class="p-4 flex flex-column align-items-center justify-content-center text-center gap-4 w-full md:w-10 h-full min-h-20rem"
     >
-      <h3 class="text-xl font-semibold text-color m-0">Nuestros servicios populares</h3>
+      <h3 class="text-xl font-semibold text-color m-0">
+        Nuestros servicios populares
+      </h3>
       <button
         pButton
         class="px-5 py-3 border-none text-base bg-blue-600"
@@ -29,12 +40,16 @@
     <div
       class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
       *ngFor="let item of services; trackBy: trackById"
+      data-reveal-item
     >
       <app-card-service [props]="item" class="w-full md:w-10"></app-card-service>
     </div>
 
     <!-- Tarjeta fija "Otros servicios" al final -->
-    <div class="col-12 sm:col-6 lg:col-3 flex justify-content-center">
+    <div
+      class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
+      data-reveal-item
+    >
       <app-card-service [props]="otherCard" class="w-full md:w-10"></app-card-service>
     </div>
   </ng-container>

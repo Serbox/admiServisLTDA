@@ -1,4 +1,15 @@
-<app-form></app-form>
-<app-our-services class="mt-5"></app-our-services>
-<app-maintenance></app-maintenance>
-<app-us></app-us>
+<section id="inicio" appScrollReveal="up" [revealDuration]="700">
+  <app-form></app-form>
+</section>
+
+<section id="servicios" class="mt-5" appScrollReveal="right" [revealDuration]="700">
+  <app-our-services></app-our-services>
+</section>
+
+<section id="mantenimiento" class="mt-5" appScrollReveal="left" [revealDuration]="700">
+  <app-maintenance></app-maintenance>
+</section>
+
+<section id="nosotros" class="mt-5" appScrollReveal="fade" [revealDuration]="800">
+  <app-us></app-us>
+</section>

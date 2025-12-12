@@ -6,11 +6,12 @@ import { CardService } from '../card-service/card-service';
 import { Supabase } from '../../app/core/supabase';
 import { Servicio } from './constants';
 import { ChangeDetectorRef, NgZone } from '@angular/core';
+import { ScrollRevealDirective } from '../../app/shared/directives/scroll-reveal';
 
 @Component({
   selector: 'app-our-services',
   standalone: true,
-  imports: [CommonModule, ButtonModule, CardService],
+  imports: [CommonModule, ButtonModule, CardService, ScrollRevealDirective],
   templateUrl: './our-services.html',
   styleUrls: ['./our-services.scss'],
 })
