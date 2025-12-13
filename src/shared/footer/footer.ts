@@ -18,8 +18,8 @@ export class Footer {
   call()   { window.location.href = `tel:${this.phone}`; }
 
   socials = [
-    { icon: 'pi pi-facebook',  label: 'Facebook',  url: 'https://facebook.com' },
-    { icon: 'pi pi-whatsapp',  label: 'WhatsApp', url: 'https://wa.me/57' + this.phone },
-    { icon: 'pi pi-instagram', label: 'Instagram', url: 'https://instagram.com' }
+    { icon: 'fa-brands fa-facebook',  label: 'Facebook',  url: 'https://facebook.com' },
+    { icon: 'fa-brands fa-whatsapp',  label: 'WhatsApp', url: 'https://wa.me/57' + this.phone },
+    { icon: 'fa-brands fa-instagram', label: 'Instagram', url: 'https://instagram.com' }
   ];
 }

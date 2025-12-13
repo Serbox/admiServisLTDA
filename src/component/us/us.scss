@@ -227,51 +227,63 @@
 /*  RESPONSIVO                   */
 /* ----------------------------- */
 
+/* ===========================
+   AJUSTES SOLO PARA MÓVIL
+   =========================== */
 @media (max-width: 768px) {
-  /* Sección principal un poco más compacta */
-  .about-and-clients,
+
+  /* --- BLOQUE "POR QUÉ ELEGIRNOS" (imagen + texto) --- */
+
+  /* Centrar todo el primer flex de la sección */
+  .about-and-clients > div:first-child {
+    align-items: center !important; 
+    margin-right: 20vh;  /* sobreescribe align-items-start */
+  }
+
+  /* Columna de texto: que no se pegue a la derecha */
+  .about-and-clients .flex-1 {
+    width: 100%;
+    text-align: center;               /* título y párrafos centrados */
+  }
+
+  /* El texto largo se ve mejor centrado arriba
+     pero la lista que quede alineada a la izquierda */
+  .about-and-clients .flex-1 ul {
+    text-align: left;
+    padding-left: 1.25rem;
+    margin: 0.75rem auto 0;
+    max-width: 22rem;                 /* para que no ocupe todo el ancho */
+  }
+
+  /* Imagen un poco más controlada en tamaño y centrada */
+  .about-and-clients img[alt="Servicios de limpieza en oficina"] {
+    max-width: 260px;
+    width: 100%;
+  }
+
+  /* --- TESTIMONIO --- */
+
   .testimonial {
     padding-inline: 1rem;
   }
 
-  .clients-section {
-    padding: 2.5rem 1rem;
+  /* Que el grid del testimonial quede centrado y no cargado a un lado */
+  .testimonial-grid {
+    row-gap: 1.5rem;
+    text-align: center;
   }
 
-  .clients-title {
-    font-size: 1.4rem;
+  /* Avatar centrado siempre en móvil */
+  .testimonial .circle-wrap {
+    margin-inline: auto;
   }
 
-  .clients-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1.6rem;
+  /* Tarjeta de testimonio ocupa todo el ancho y centrada */
+  .testimonial-card {
+    margin: 0 auto;
   }
 
-  .clients-logos-row {
-    gap: 1rem;
+  .testimonial-card p {
+    text-align: left;  /* texto largo más legible */
   }
-
-  .logo-pill {
-    min-width: 160px;
-    max-width: 190px;
-    height: 80px;
-    padding: 0.9rem 1.4rem;
-  }
-
-  .logo-img {
-    max-width: 130px;
-    max-height: 44px;
-  }
-
-  /* Quitamos saltos de altura en móvil */
-  .logo-pill:nth-child(2),
-  .logo-pill:nth-child(3),
-  .logo-pill:nth-child(4) {
-    transform: translateY(0);
-  }
-}
-
-/* Ajuste grid testimonial */
-.testimonial-grid {
-  row-gap: 2rem;
 }

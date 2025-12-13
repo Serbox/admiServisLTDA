@@ -23,7 +23,7 @@
           (click)="mailto()"
         >
           <div class="contact-icon">
-            <i class="pi pi-envelope"></i>
+            <i class="fa-regular fa-envelope"></i>
           </div>
           <div class="contact-text">
             <div class="contact-label">Escríbenos</div>
@@ -37,7 +37,7 @@
           (click)="call()"
         >
           <div class="contact-icon">
-            <i class="pi pi-phone"></i>
+            <i class="fa-solid fa-phone"></i>
           </div>
           <div class="contact-text">
             <div class="contact-label">Llámanos</div>
@@ -55,7 +55,7 @@
              rel="noopener"
              class="social-pill"
              pRipple>
-            <i [class]="s.icon"></i>
+            <i class="{{s.icon}}"></i>
             <span>{{ s.label }}</span>
           </a>
         </div>
