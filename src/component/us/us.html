@@ -1,38 +1,55 @@
-
-<section class="w-full text-center py-3  bg-blue-600">
+<!-- POR QUÉ ELEGIRNOS -->
+<section class="w-full text-center py-3 bg-blue-600">
   <h2 class="m-0 text-white font-bold text-xl md:text-2xl">
     Porqué Elegirnos
   </h2>
 </section>
 
-<section class="w-full mx-auto px-3 md:px-4 py-5 md:py-6 my-4 md:my-6" >
-
-  <div class="flex flex-column md:flex-row align-items-start justify-content-between gap-8 md:gap-6">
-    
- 
-    <div class="flex justify-content-center">
-      <div class="border-2 border-round-xl surface-0" style="border-color: var(--p-blue-600); padding:.6rem;">
-        <div class="border-2 border-round-lg overflow-hidden" style="border-color: var(--p-blue-600);">
+<section
+  class="about-and-clients w-full max-w-6xl mx-auto px-3 md:px-4 py-5 md:py-6 my-4 md:my-6"
+>
+  <!-- IMAGEN + TEXTO -->
+  <div
+    class="flex flex-column md:flex-row align-items-start justify-content-between gap-4 md:gap-6"
+  >
+    <!-- IMAGEN -->
+    <div class="flex justify-content-center mb-4 md:mb-0">
+      <div
+        class="border-2 border-round-xl surface-0"
+        style="border-color: var(--p-blue-600); padding: 0.6rem"
+      >
+        <div
+          class="border-2 border-round-lg overflow-hidden"
+          style="border-color: var(--p-blue-600);"
+        >
           <img
             src="/aseo-mujer.png"
             alt="Servicios de limpieza en oficina"
-            class="block w-20rem h-15rem md:w-24rem md:h-18rem"
-            style="object-fit: cover;" />
+            class="block w-full max-w-xs sm:max-w-sm md:w-24rem md:h-18rem"
+            style="object-fit: cover; aspect-ratio: 4 / 3;"
+          />
         </div>
       </div>
     </div>
 
-
-    <div class="flex-1">
-      <h2 class="m-0 line-height-3 text-900 text-2xl md:text-4xl font-bold">
-        <span class="text-blue-600">12 años </span> <span class="font-normal">de trayectoria</span>
+    <!-- TEXTO -->
+    <div class="flex-1 text-left">
+      <h2
+        class="m-0 line-height-3 text-900 text-2xl md:text-4xl font-bold text-center md:text-left"
+      >
+        <span class="text-blue-600">12 años </span>
+        <span class="font-normal">de trayectoria</span>
       </h2>
 
-      <div class="mt-2 text-900 text-base md:text-lg line-height-3">
+      <div
+        class="mt-2 text-900 text-base md:text-lg line-height-3 text-justify md:text-left"
+      >
         <p class="m-0 mt-2">
-          En <strong>Admiservis LTDA</strong> contamos con <strong>más de 12 años de experiencia</strong>
+          En <strong>Admiservis LTDA</strong> contamos con
+          <strong>más de 12 años de experiencia</strong>
           ofreciendo <strong>servicios de limpieza y mantenimiento</strong> para
-          <strong> hogares</strong>, <strong>empresas</strong> y <strong>conjuntos residenciales</strong>.
+          <strong> hogares</strong>, <strong>empresas</strong> y
+          <strong>conjuntos residenciales</strong>.
         </p>
 
         <p class="m-0 mt-2">Nos caracteriza nuestro compromiso con:</p>
@@ -43,111 +60,110 @@
         </ul>
 
         <p class="m-0 mt-2">
-          Hemos construido <strong>relaciones duraderas</strong> gracias a nuestro
-          compromiso con la <strong>calidad</strong> y el <strong>bienestar</strong> de los espacios que cuidamos día a día.
+          Hemos construido <strong>relaciones duraderas</strong> gracias a
+          nuestro compromiso con la <strong>calidad</strong> y el
+          <strong>bienestar</strong> de los espacios que cuidamos día a día.
         </p>
       </div>
     </div>
   </div>
 
- 
-<div class="grid text-center mt-4 md:mt-5">
+  <!-- NÚMEROS -->
+  <div class="grid text-center mt-4 md:mt-5">
+    <div class="col-12 md:col-4 mb-3 md:mb-0">
+      <div
+        class="text-blue-600 font-bold text-4xl md:text-5xl"
+        appCountUp
+        [countTo]="12"
+        prefix="+ "
+        [duration]="1500"
+      ></div>
+      <div class="mt-1 text-900 text-base md:text-lg font-semibold">
+        Años de Experiencia
+      </div>
+    </div>
 
-  <div class="col-12 md:col-4">
-    <div
-      class="text-blue-600 font-bold text-4xl md:text-5xl"
-      appCountUp
-      [countTo]="12"
-      prefix="+ "
-      [duration]="1500"
-    ></div>
-    <div class="mt-1 text-900 text-base md:text-lg font-semibold">
-      Años de Experiencia
+    <div class="col-12 md:col-4 mb-3 md:mb-0">
+      <div
+        class="text-blue-600 font-bold text-4xl md:text-5xl"
+        appCountUp
+        [countTo]="18"
+        prefix="+ "
+        [duration]="1500"
+      ></div>
+      <div class="mt-1 text-900 text-base md:text-lg font-semibold">
+        Clientes Satisfechos
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <div
+        class="text-blue-600 font-bold text-4xl md:text-5xl"
+        appCountUp
+        [countTo]="100"
+        prefix="+ "
+        [duration]="1500"
+      ></div>
+      <div class="mt-1 text-900 text-base md:text-lg font-semibold">
+        Proyectos Completados
+      </div>
     </div>
   </div>
-
-  <div class="col-12 md:col-4">
-    <div
-      class="text-blue-600 font-bold text-4xl md:text-5xl"
-      appCountUp
-      [countTo]="18"
-      prefix="+ "
-      [duration]="1500"
-    ></div>
-    <div class="mt-1 text-900 text-base md:text-lg font-semibold">
-      Clientes Satisfechos
-    </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div
-      class="text-blue-600 font-bold text-4xl md:text-5xl"
-      appCountUp
-      [countTo]="100"
-      prefix="+ "
-      [duration]="1500"
-    ></div>
-    <div class="mt-1 text-900 text-base md:text-lg font-semibold">
-      Proyectos Completados
-    </div>
-  </div>
-
-</div>
-
 </section>
-<!-- src/app/component/home/about-and-clients.html -->
 
-
-<section class="testimonial mx-auto w-full max-w-7xl px-3 md:px-5 py-5">
-  <div class="grid align-items-center justify-content-center testimonial-grid">
-    
+<!-- TESTIMONIO -->
+<section class="testimonial mx-auto w-full max-w-6xl px-3 md:px-5 py-5">
+  <div
+    class="grid align-items-center justify-content-center testimonial-grid"
+  >
     <!-- FOTO / AVATAR -->
-<div class="col-12 md:col-4 flex justify-content-center md:justify-content-end">
-  <div class="circle-wrap">
-    <!-- <p-skeleton
-      shape="circle"
-      width="100%"
-      height="100%">
-    </p-skeleton> -->
-
-    <img
-      src="/alejandro.png"
-      alt="reseña de admiservis"
-      class="circle-img"
-    />
-  </div>
-</div>
-
+    <div
+      class="col-12 md:col-4 flex justify-content-center md:justify-content-end mb-3 md:mb-0"
+    >
+      <div class="circle-wrap">
+        <img
+          src="/alejandro.png"
+          alt="reseña de admiservis"
+          class="circle-img"
+        />
+      </div>
+    </div>
 
     <!-- TESTIMONIO -->
     <div class="col-12 md:col-8">
-      <div class="testimonial-card border-round-2xl surface-card shadow-2 p-4 md:p-5">
-        <h3 class="text-900 text-xl md:text-2xl font-bold m-0">
+      <div
+        class="testimonial-card border-round-2xl surface-card shadow-2 p-4 md:p-5"
+      >
+        <h3
+          class="text-900 text-lg md:text-2xl font-bold m-0 text-center md:text-left"
+        >
           Juan López
         </h3>
-        <p class="testimonial-role m-0 mt-1 mb-3 text-blue-600">
+        <p
+          class="testimonial-role m-0 mt-1 mb-3 text-blue-600 text-center md:text-left"
+        >
           Administrador de Propiedad Horizontal
         </p>
 
-        <p class="m-0 text-700 line-height-3">
-          Desde que trabajamos con <strong class="text-blue-600">Admiservis</strong> se nota la diferencia.
-          Son puntuales, cuidadosos con cada detalle y siempre dejan los espacios
-          impecables. Se toman el tiempo de entender lo que necesitamos y, si surge
-          algún imprevisto, lo resuelven de inmediato. Da mucha tranquilidad saber
-          que contamos con un equipo tan comprometido y responsable.
+        <p
+          class="m-0 text-700 line-height-3 text-justify md:text-left"
+        >
+          Desde que trabajamos con
+          <strong class="text-blue-600">Admiservis</strong> se nota la
+          diferencia. Son puntuales, cuidadosos con cada detalle y siempre
+          dejan los espacios impecables. Se toman el tiempo de entender lo que
+          necesitamos y, si surge algún imprevisto, lo resuelven de inmediato.
+          Da mucha tranquilidad saber que contamos con un equipo tan
+          comprometido y responsable.
         </p>
       </div>
     </div>
-
   </div>
 </section>
 
+<div class="surface-50" style="height: 24px"></div>
 
-
-
-<div class="surface-50" style="height:24px"></div>
-
-
+<!-- CLIENTES -->
 <section class="clients-section">
   <div class="clients-inner">
     <p class="clients-eyebrow">Confían en nosotros</p>
@@ -157,8 +173,9 @@
     </h2>
 
     <p class="clients-subtitle">
-      Brindamos a familias, negocios y entidades un servicio integral que conserva sus instalaciones 
-      en óptimas condiciones, con atención permanente y personal capacitado.
+      Brindamos a familias, negocios y entidades un servicio integral que
+      conserva sus instalaciones en óptimas condiciones, con atención permanente
+      y personal capacitado.
     </p>
 
     <div class="clients-logos-row">
@@ -170,7 +187,3 @@
     </div>
   </div>
 </section>
-
-
-
-

@@ -22,9 +22,10 @@
       type="button"
       class="menu-toggle md:hidden p-link flex align-items-center justify-content-center border-round"
       (click)="isMobileMenuOpen = !isMobileMenuOpen"
+      
     >
-      <i
-        class="pi text-xl"
+      <i class="fa-solid fa-align-justify"
+        
         [ngClass]="{ 'pi-bars': !isMobileMenuOpen, 'pi-times': isMobileMenuOpen }"
       ></i>
     </button>

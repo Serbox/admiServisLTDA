@@ -14,7 +14,7 @@ html {
   z-index: 99999 !important;
 }
 
-/* You can add global styles to this file, and also import other style files */
+
 
 * {
   font-family: sans-serif;
@@ -141,7 +141,7 @@ html {
 //-----------------------------
 //-----------------------------
 //-----------------------------
-/* Estado base: oculto y listo para animar */
+
 .reveal-base {
   opacity: 0;
   transform: translateY(10px);
@@ -150,42 +150,73 @@ html {
   will-change: opacity, transform;
 }
 
-/* Cuando entra al viewport */
+
 .is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
 
-/* Variantes */
 
-/* Desde abajo hacia arriba */
+
+
 .reveal-up {
   transform: translate3d(0, 24px, 0);
 }
 
-/* Desde la izquierda */
+
 .reveal-left {
   transform: translate3d(-32px, 0, 0);
 }
 
-/* Desde la derecha */
+
 .reveal-right {
   transform: translate3d(32px, 0, 0);
 }
 
-/* Solo fade */
+
 .reveal-fade {
   transform: none;
 }
 
-/* Zoom + fade */
+
 .reveal-zoom {
   transform: scale(0.96);
 }
 
-/* Responsive tweak: en móviles, animación un poco más corta */
+
 @media (max-width: 767px) {
   .reveal-base {
     transition-duration: 450ms !important;
   }
 }
+
+
+
+/* -------- esto es para efectos del mouse -------- */
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(185, 234, 255, 0.35), rgba(255, 255, 255, 0));
+  opacity: 0.9;
+  z-index: 9999;
+  animation: cursorTrailFade 0.5s ease-out forwards;
+}
+
+@keyframes cursorTrailFade {
+  0% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+
+

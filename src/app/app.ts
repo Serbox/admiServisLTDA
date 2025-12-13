@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { Header } from '../shared/header/header';
@@ -15,6 +15,27 @@ import { Us } from "../component/us/us";
   styleUrl: './app.scss',
 
 })
-export class App {
+export class App  implements OnInit{
   protected readonly title = signal('admiservis');
+
+
+ngOnInit(): void {
+  this.enableConstantCursorTrail();
+}
+
+private enableConstantCursorTrail() {
+  window.addEventListener("mousemove", (e: MouseEvent) => {
+    const trail = document.createElement("div");
+    trail.className = "cursor-trail";
+    trail.style.top = `${e.clientY}px`;
+    trail.style.left = `${e.clientX}px`;
+    document.body.appendChild(trail);
+
+    // eliminar después de animar
+    setTimeout(() => trail.remove(), 500);
+  });
+}
+
+ 
+
 }

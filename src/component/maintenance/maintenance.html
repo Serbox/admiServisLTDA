@@ -1,76 +1,92 @@
-<section class="maintenance surface-0">
-  <div class="mx-auto w-full px-3 md:px-5" style="max-width:1140px">
-    <div class="grid  align-items-center">
+<section class="maintenance">
+  <div class="maintenance-card">
+    <div class="flex gap-4 grid align-items-center">
 
-    
-      <div class="col-12 lg:col-7 reveal-on-scroll from-bottom">
-        <h2 class="m-0 mb-4">
+      <!-- COLUMNA TEXTO -->
+      <div class="col-12 lg:col-7 text-col reveal-on-scroll from-bottom">
+        <span class="eyebrow">Servicios integrales</span>
+
+        <h2 class="m-0 mb-3 title">
           <span class="text-blue-600 font-bold">Servicios</span>
           <span class="text-900"> de Mantenimiento</span>
         </h2>
 
+        <p class="subtitle m-0 mb-3">
+          Soluciones profesionales de aseo y mantenimiento para conservar 
+          tus espacios en óptimas condiciones, con equipos confiables y personal capacitado.
+        </p>
+
         <div class="grid mt-3">
-       
           <div class="col-12 md:col-6" *ngIf="services[0] as s">
-            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
-              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+            <div class="service-item">
+              <div class="service-icon-wrap">
+                <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              </div>
               <div>
-                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
-                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+                <div class="service-title">{{ s.title }}</div>
+                <p class="service-desc m-0">{{ s.desc }}</p>
               </div>
             </div>
           </div>
 
-          
           <div class="col-12 md:col-6" *ngIf="services[1] as s">
-            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
-              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+            <div class="service-item">
+              <div class="service-icon-wrap">
+                <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              </div>
               <div>
-                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
-                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+                <div class="service-title">{{ s.title }}</div>
+                <p class="service-desc m-0">{{ s.desc }}</p>
               </div>
             </div>
           </div>
 
-          
           <div class="col-12 md:col-6" *ngIf="services[2] as s">
-            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
-              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+            <div class="service-item">
+              <div class="service-icon-wrap">
+                <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              </div>
               <div>
-                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
-                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+                <div class="service-title">{{ s.title }}</div>
+                <p class="service-desc m-0">{{ s.desc }}</p>
               </div>
             </div>
           </div>
 
-        
           <div class="col-12 md:col-6" *ngIf="services[3] as s">
-            <div class="service-item flex gap-3 p-2 border-round transition-duration-150 hover:surface-100">
-              <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+            <div class="service-item">
+              <div class="service-icon-wrap">
+                <img [src]="s.icon" [alt]="s.alt" class="icon-img" />
+              </div>
               <div>
-                <div class="text-900 font-bold mb-2">{{ s.title }}</div>
-                <p class="m-0 text-700 line-height-3">{{ s.desc }}</p>
+                <div class="service-title">{{ s.title }}</div>
+                <p class="service-desc m-0">{{ s.desc }}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4 actions-row">
           <button
             pButton
             class="px-5 py-3 border-none text-base bg-blue-600"
             [routerLink]="['/more']"
             label="Ver Más">
           </button>
+          <span class="helper-text">
+            Respuesta rápida y asesoría personalizada.
+          </span>
         </div>
       </div>
 
-   
-      <div class="col-12 lg:col-5 flex justify-content-end top-100 lg:mt-0">
-        <img
-          [src]="workerImage"
-          alt="Técnico de mantenimiento Admiservis"
-          class="worker-img" />
+      <!-- COLUMNA IMAGEN -->
+      <div class="col-12 lg:col-5 img-col">
+        <div class="image-frame">
+          <img
+            [src]="workerImage"
+            alt="Técnico de mantenimiento Admiservis"
+            class="worker-img" />
+        </div>
       </div>
 
     </div>
