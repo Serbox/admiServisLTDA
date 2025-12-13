@@ -1,5 +1,3 @@
-/* estilos modernos y responsivos para la lista de descripciones */
-
 :root {
   --accent: #2563eb;
   --card-bg: #fff;
@@ -9,15 +7,18 @@
   --gap: 1rem;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .servis-list {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 1rem;
+  padding: 1.5rem 1rem 2rem;
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* loading / error */
+/* MENSAJES */
 .loading,
 .error,
 .empty {
@@ -26,12 +27,11 @@
   padding: 1rem;
 }
 
-/* item row */
+/* ITEM ROW */
 .servis-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  //background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,1));
   border-radius: var(--radius);
   padding: 1rem;
   box-shadow: 0 8px 24px rgba(12,12,12,0.06);
@@ -39,75 +39,69 @@
   overflow: hidden;
 }
 
-/* swap order for odd items (index 1,3,5...) */
 .servis-item.reverse {
   flex-direction: row-reverse;
 }
 
-/* if no image, content spans whole width */
+/* sin imagen → contenido centrado */
 .servis-item.no-image {
   justify-content: center;
   padding: 1.25rem;
 }
 
-/* media column */
-/* media column */
+/* MEDIA (IMAGEN) */
 .media {
   flex: 0 0 44%;
   max-width: 44%;
-
-  /* ✅ tamaño uniforme con relación de aspecto */
   aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #e5e7eb; /* fondo gris clarito para cuando carga */
+  background: #e5e7eb;
 }
 
 .media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* recorta manteniendo proporción */
-  object-position: center; /* centra la parte importante */
-  border-radius: 0;        /* ya lo maneja el contenedor */
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
   transition: transform 420ms ease, filter 300ms;
 }
 
-
-/* content column */
+/* CONTENIDO */
 .content {
   flex: 1 1 56%;
   color: var(--text);
 }
 
-/* description text */
 .desc {
   margin: 0;
   line-height: 1.6;
   color: var(--muted);
   font-size: 0.98rem;
   text-align: left;
-  /* limitar altura si quieres - opcional */
   max-height: 24rem;
   overflow: auto;
   padding-right: 0.25rem;
 }
 
-/* hover effects */
+/* HOVER */
 .servis-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 22px 44px rgba(37,99,235,0.08);
-  //background: linear-gradient(180deg, #fff, #fbfdff);
 }
+
 .servis-item:hover .media img {
   transform: scale(1.03);
   filter: saturate(1.03);
 }
 
-/* responsive: en móvil apilar */
+/* ===========================
+   RESPONSIVE SERVIS-ITEMS
+   =========================== */
 @media (max-width: 900px) {
   .servis-item,
   .servis-item.reverse {
@@ -118,31 +112,36 @@
   .media {
     flex: 0 0 auto;
     max-width: 100%;
-    height: 12.5rem;
     width: 100%;
+    height: 12.5rem;      /* altura fija cómoda en cel */
   }
 
   .content {
     padding-top: 0.6rem;
   }
 
-  .desc { font-size: 0.95rem; }
+  .desc {
+    font-size: 0.95rem;
+    max-height: none;     /* dejar que crezca en móvil */
+  }
 }
 
+/* ===========================
+   HERO FORM + IMAGEN
+   =========================== */
 
+/* contenedor del hero ya tiene clases flex con PrimeFlex */
+.hero {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-
-
-
-
-/* estilos adicionales para el componente hero */
-
+/* tarjeta del formulario */
 .hero__card {
   position: relative;
   z-index: 2;
-  //margin-left: 30%;
-  //margin-bottom: -17vh;      /* también pisa la franja */
-  flex-shrink: 0;            /* que no se aplaste */
+  flex-shrink: 0;
   width: 100%;
   max-width: 360px;
   border-radius: 1.75rem;
@@ -157,12 +156,10 @@
   padding: 0;
 }
 
-/* header del card */
 .hero__card-header {
   text-align: center;
 }
 
-/* barrita superior tipo mockup */
 .hero__arrow {
   width: 70px;
   height: 4px;
@@ -170,7 +167,7 @@
   background: #2563eb;
 }
 
-/* inputs redonditos */
+/* inputs redondos */
 .hero__card .p-inputtext {
   border-radius: 999px;
   border: 1px solid #e5e7eb;
@@ -193,4 +190,57 @@
 
 .hero__btn:hover {
   background: #1d4ed8 !important;
+}
+
+/* imagen del hero */
+.hero__img {
+  display: block;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ===========================
+   RESPONSIVE HERO
+   =========================== */
+@media (max-width: 768px) {
+  /* el contenedor hero ya es flex-column por tus clases:
+     flex flex-column md:flex-row, aquí solo ajustamos tamaños */
+  .hero {
+    padding: 1.5rem 1rem 0;
+    gap: 1.5rem;
+  }
+
+  .hero__card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero__img {
+    max-width: 260px;
+    margin: 0 auto 0.5rem auto;
+  }
+
+  .hero__card-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero__card .p-inputtext {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-inline: 0.75rem;
+  }
+
+  .hero__img {
+    max-width: 220px;
+  }
+
+  .hero__card {
+    border-radius: 1.5rem;
+  }
 }
