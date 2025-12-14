@@ -112,6 +112,7 @@
 
 /* Responsive tweaks */
 @media (max-width: 640px) {
+  .service-card { min-height: auto; padding: 0.85rem; }
   .service-media { width: 72px; height: 72px; }
   .service-img { width: 66px; height: 66px; }
   .service-title { font-size: 1rem; }

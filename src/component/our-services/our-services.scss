@@ -36,6 +36,10 @@ RESPONSIVE - MÓVIL
   /* algo de respiro lateral en cel */
   section {
     padding-inline: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10vh;
   }
   
   /* que cada columna ocupe el 100% del ancho */

@@ -7,6 +7,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+
 
 
 /* opcional pero recomendable: subir z-index */
