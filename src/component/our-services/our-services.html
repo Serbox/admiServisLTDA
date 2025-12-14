@@ -1,57 +1,72 @@
 <section
-  class="flex justify-content-center p-4 poppins-regular"
+  class="w-full p-4 poppins-regular"
   appScrollReveal="up"
   [revealStagger]="true"
   [revealDuration]="650"
   [revealStaggerStep]="100"
 >
-  <!-- Card especial (título + ver más) -->
-  <div
-    class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
-    data-reveal-item
-  >
+  <!-- GRID CONTENEDOR -->
+  <div class="grid w-full justify-content-center gap-3 md:gap-4">
+
+    <!-- Card especial (título + ver más) -->
     <div
-      class="p-4 flex flex-column align-items-center justify-content-center text-center gap-4 w-full md:w-10 h-full min-h-20rem"
-    >
-      <h3 class="text-xl font-semibold text-color m-0">
-        Nuestros servicios populares
-      </h3>
-      <button
-        pButton
-        class="px-5 py-3 border-none text-base bg-blue-600"
-        (click)="goToServices()"
-        label="Ver Más"
-      ></button>
-    </div>
-  </div>
-
-  <!-- Loading -->
-  <div *ngIf="loading" class="col-12 text-center">
-    <!-- From Uiverse.io by Nawsome --> 
-
-  </div>
-
-  <!-- Error -->
-  <div *ngIf="!loading && error" class="col-12 text-center text-red-600">
-    {{ error }}
-  </div>
-
-  <!-- Lista de servicios (hasta 2) -->
-  <ng-container *ngIf="!loading && !error">
-    <div
-      class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
-      *ngFor="let item of services; trackBy: trackById"
+      class="col-12 md:col-6 lg:col-3 flex justify-content-center"
       data-reveal-item
     >
-      <app-card-service [props]="item" class="w-full md:w-10"></app-card-service>
+      <div
+        class="p-4 flex flex-column align-items-center justify-content-center text-center gap-4 w-full md:w-10"
+        style="min-height: 16rem"
+      >
+        <h3 class="text-xl font-semibold text-color m-0">
+          Nuestros servicios populares
+        </h3>
+        <button
+          pButton
+          class="px-5 py-3 border-none text-base bg-blue-600"
+          (click)="goToServices()"
+          label="Ver Más"
+        ></button>
+      </div>
     </div>
 
-    <!-- Tarjeta fija "Otros servicios" al final -->
-    <div
-      class="col-12 sm:col-6 lg:col-3 flex justify-content-center"
-      data-reveal-item
-    >
-      <app-card-service [props]="otherCard" class="w-full md:w-10"></app-card-service>
+    <!-- Loading -->
+    <div *ngIf="loading" class="col-12 flex justify-content-center">
+      <!-- aquí tu loader -->
+      <span>Cargando…</span>
     </div>
-  </ng-container>
+
+    <!-- Error -->
+    <div
+      *ngIf="!loading && error"
+      class="col-12 text-center text-red-600"
+    >
+      {{ error }}
+    </div>
+
+    <!-- Lista de servicios -->
+    <ng-container *ngIf="!loading && !error">
+      <div
+        class="col-12 md:col-6 lg:col-3 flex justify-content-center"
+        *ngFor="let item of services; trackBy: trackById"
+        data-reveal-item
+      >
+        <app-card-service
+          [props]="item"
+          class="w-full md:w-10"
+        ></app-card-service>
+      </div>
+
+      <!-- Tarjeta fija "Otros servicios" al final -->
+      <div
+        class="col-12 md:col-6 lg:col-3 flex justify-content-center"
+        data-reveal-item
+      >
+        <app-card-service
+          [props]="otherCard"
+          class="w-full md:w-10"
+        ></app-card-service>
+      </div>
+    </ng-container>
+
+  </div>
 </section>
